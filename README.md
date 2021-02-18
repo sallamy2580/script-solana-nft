@@ -5,6 +5,8 @@ The program retrieves all mint addresses associated with a Candy Cane V1 ID, it 
 
 This program uses https://ssc-dao.genesysgo.net (line 8), you can speed up the process by using your own endpoint.
 
+Code adapted from https://solanacookbook.com/references/nfts.html#candy-machine-v1
+
 ## Installing
 
 * Libraries used: @solana/web3.js, bs58, axios
