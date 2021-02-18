@@ -8,7 +8,7 @@ This program uses https://ssc-dao.genesysgo.net (line 8), you can speed up the p
 ## Installing
 
 * Libraries used: @solana/web3.js, bs58, axios
-* If you do not know your candy machine ID, at the time of writting this magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project)
+* If you do not know your candy machine ID, at the time of writting this magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project, property: candyMachineIds)
 * Paste your Candy Machine ID on line 19
 * Run using: ts-node unique_holders.ts
 
