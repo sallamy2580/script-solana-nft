@@ -3,9 +3,10 @@ This is a simple Typescript script that takes in a Solana NFT projects Candy Mac
 
 ## Installing
 
-Libraries used: @solana/web3.js, bs58, axios
-
-Run using: ts-node unique_holders.ts
+* Libraries used: @solana/web3.js, bs58, axios
+* If you do not know your candy machine ID, at the time of writting this magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project)
+* Paste your Candy Machine ID on line 19
+* Run using: ts-node unique_holders.ts
 
 ## Find Me
 
