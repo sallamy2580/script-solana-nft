@@ -50,13 +50,15 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
 
    //Getting mint addresses from candy machine ID
    let mintAddr = await getMintAddresses(candyMachineId);
-   console.log("Found " + mintAddr.length + " mint addresses");
+   let mintLen = mintAddr.length;
+
+   console.log("Found " + mintLen + " mint addresses");
 
    //Creating hashmap to store address counts (nfts held)
    let ownerAddr = new Map();
 
 //Looping through each mint ownerAddress
-for (let i = 0; i < mintAddr.length; i++) {
+for (let i = 0; i < mintLen; i++) {
    //Fetching owners by mint ownerAddress
    try {
    const largestAccounts = await connection.getTokenLargestAccounts(new PublicKey(mintAddr[i]));
@@ -65,7 +67,7 @@ for (let i = 0; i < mintAddr.length; i++) {
    let ded = largestAccountInfo.value!.data;
    let buf = Buffer.from(JSON.stringify(ded));
    let owner = JSON.parse(buf.toString()).parsed.info.owner;
-   console.log("(" + (i+1) + "/" + mintAddr.length + ") CHECKING: " + mintAddr[i]);
+   console.log("(" + (i+1) + "/" + mintLen + ") CHECKING: " + mintAddr[i]);
 
    //Adding to hashmap if not already included
    if (!ownerAddr.has(owner)) {
@@ -76,7 +78,7 @@ for (let i = 0; i < mintAddr.length; i++) {
     ownerAddr.set(owner, ownerAddr.get(owner)+1);
   }
 } catch(error) {
-  console.log("(" + (i+1) + "/" + mintAddr.length + ") CHECKING: " + "ERROR SKIPPING");
+  console.log("(" + (i+1) + "/" + mintLen + ") CHECKING: " + "ERROR SKIPPING");
 }
  }
 
@@ -93,16 +95,41 @@ for (let i = 0; i < mintAddr.length; i++) {
   return (b.nftCount > a.nftCount) ? 1 : ((a.nftCount > b.nftCount) ? -1 : 0)
 });
 
- console.log("\nYour project has " + ownerAddr.size + " unqiue holders");
+  let uniqueHolders = ownerAddr.size;
 
- if (mintAddr.length >= 15) {
+  console.log("\n=====================================================================")
+
+ console.log("\nYour project has " + uniqueHolders + " unqiue holders\n");
+
+ if (mintLen >= 15) {
  console.log("Top 15 holders:");
  for (let i = 0; i < 15; i++) {
-   console.log((i+1) + ". " + holders_sorted[i]['ownerAddress'] + " owns " + holders_sorted[i]['nftCount'] + "/" + mintAddr.length + " (" + (Math.round(((holders_sorted[i]['nftCount']/mintAddr.length) + Number.EPSILON) * 1000) / 1000) + "%)");
+   console.log((i+1) + ". " + holders_sorted[i]['ownerAddress'] + " owns " + holders_sorted[i]['nftCount'] + "/" + mintLen + " (" + (Math.round(((holders_sorted[i]['nftCount']/mintLen*100) + Number.EPSILON) * 1000) / 1000) + "%)");
  }
 } else {
   console.log("Top holder:");
-  console.log("1. " + holders_sorted[0]['ownerAddress'] + " owns " + holders_sorted[0]['nftCount'] + "/" + mintAddr.length + " (" + (Math.round(((holders_sorted[0]['nftCount']/mintAddr.length) + Number.EPSILON) * 1000) / 1000) + "%)");
+  console.log("1. " + holders_sorted[0]['ownerAddress'] + " owns " + holders_sorted[0]['nftCount'] + "/" + mintLen + " (" + (Math.round(((holders_sorted[0]['nftCount']/mintLen*100) + Number.EPSILON) * 1000) / 1000)+ "%)");
 }
 
+//Calculating lower holdings
+let amountHeld = [0,0,0,0,0];
+let i = uniqueHolders - 1;
+while (holders_sorted[i]['nftCount'] <= 5 && i > 0) {
+  if (holders_sorted[i]['nftCount'] == 1) {
+    amountHeld[0]++;
+  } else if (holders_sorted[i]['nftCount'] == 2) {
+    amountHeld[1]++;
+  } else if (holders_sorted[i]['nftCount'] == 3){
+    amountHeld[2]++;
+  } else if (holders_sorted[i]['nftCount'] == 4){
+    amountHeld[3]++;
+  } else {
+    amountHeld[4]++;
+  }
+  i--;
+}
+console.log("\nLower holdings distribution: ");
+for( let i = 0; i < 5; i++) {
+  console.log(amountHeld[i] + " wallets hold", (i+1) , "NFT " + amountHeld[i] + "/" + uniqueHolders + " wallets (" + (Math.round(((amountHeld[i]/uniqueHolders*100) + Number.EPSILON) * 1000) / 1000)+ "%)");
+}
 })()
