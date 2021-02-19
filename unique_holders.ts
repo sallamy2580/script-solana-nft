@@ -96,7 +96,7 @@ for (let i = 0; i < mintAddr.length; i++) {
  console.log("\nYour project has " + ownerAddr.size + " unqiue holders");
 
  if (mintAddr.length >= 15) {
- console.log("Top 15 holder:");
+ console.log("Top 15 holders:");
  for (let i = 0; i < 15; i++) {
    console.log((i+1) + ". " + holders_sorted[i]['ownerAddress'] + " owns " + holders_sorted[i]['nftCount'] + "/" + mintAddr.length + " (" + (Math.round(((holders_sorted[i]['nftCount']/mintAddr.length) + Number.EPSILON) * 1000) / 1000) + "%)");
  }
