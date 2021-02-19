@@ -5,7 +5,7 @@ The program retrieves all mint addresses associated with a Candy Cane V1 ID, it 
 
 This program uses https://ssc-dao.genesysgo.net (line 8), you can speed up the process by using your own endpoint.
 
-![Shot 1](https://imgur.com/tX13gdl.png) 
+![Shot 1](https://imgur.com/z80lvRp.png) 
 
 ## Installing
 
