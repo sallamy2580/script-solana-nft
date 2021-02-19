@@ -16,7 +16,7 @@ const MAX_METADATA_LEN = 1 + 32 + 32 + MAX_DATA_SIZE + 1 + 1 + 9 + 172;
 const CREATOR_mintAddrAY_START = 1 + 32 + 32 + 4 + MAX_NAME_LENGTH + 4 + MAX_URI_LENGTH + 4 + MAX_SYMBOL_LENGTH + 2 + 1 + 4;
 
 const TOKEN_METADATA_PROGRAM = new PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
-const candyMachineId = new PublicKey('9yz273zB6rQHyptbSpVvC75o4G17NwJrTk4u2ZiNV3tZ');
+const candyMachineId = new PublicKey('ENTER-YOUR-ID-HERE');
 
 const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
   const metadataAccounts = await connection.getProgramAccounts(
