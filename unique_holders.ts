@@ -13,10 +13,10 @@ const MAX_CREATOR_LEN = 32 + 1 + 1;
 const MAX_CREATOR_LIMIT = 5;
 const MAX_DATA_SIZE = 4 + MAX_NAME_LENGTH + 4 + MAX_SYMBOL_LENGTH + 4 + MAX_URI_LENGTH + 2 + 1 + 4 + MAX_CREATOR_LIMIT * MAX_CREATOR_LEN;
 const MAX_METADATA_LEN = 1 + 32 + 32 + MAX_DATA_SIZE + 1 + 1 + 9 + 172;
-const CREATOR_ARRAY_START = 1 + 32 + 32 + 4 + MAX_NAME_LENGTH + 4 + MAX_URI_LENGTH + 4 + MAX_SYMBOL_LENGTH + 2 + 1 + 4;
+const CREATOR_mintAddrAY_START = 1 + 32 + 32 + 4 + MAX_NAME_LENGTH + 4 + MAX_URI_LENGTH + 4 + MAX_SYMBOL_LENGTH + 2 + 1 + 4;
 
 const TOKEN_METADATA_PROGRAM = new PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
-const candyMachineId = new PublicKey('ADD-YOUR-ID-HERE');
+const candyMachineId = new PublicKey('9yz273zB6rQHyptbSpVvC75o4G17NwJrTk4u2ZiNV3tZ');
 
 const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
   const metadataAccounts = await connection.getProgramAccounts(
@@ -32,7 +32,7 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
         // Filter using the first creator.
         {
           memcmp: {
-            offset: CREATOR_ARRAY_START,
+            offset: CREATOR_mintAddrAY_START,
             bytes: firstCreatorAddress.toBase58(),
           },
         },
@@ -46,22 +46,63 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
 };
 
 (async () => {
-   console.log("Fetching Mint Addresses");
-   let arr = await getMintAddresses(candyMachineId);
-   console.log("Found " + arr.length + " mint addresses");
-   let addr = new Set();
+   console.log("Fetching Mint Addresses (this may take a few minutes, sit back)");
 
+   //Getting mint addresses from candy machine ID
+   let mintAddr = await getMintAddresses(candyMachineId);
+   console.log("Found " + mintAddr.length + " mint addresses");
 
-for (let i = 0; i < arr.length; i++) {
-   const largestAccounts = await connection.getTokenLargestAccounts(new PublicKey(arr[i]));
+   //Creating hashmap to store address counts (nfts held)
+   let ownerAddr = new Map();
+
+//Looping through each mint ownerAddress
+for (let i = 0; i < mintAddr.length; i++) {
+   //Fetching owners by mint ownerAddress
+   try {
+   const largestAccounts = await connection.getTokenLargestAccounts(new PublicKey(mintAddr[i]));
    const largestAccountInfo = await connection.getParsedAccountInfo(largestAccounts.value[0].address);
    //Fixes dead json returned from getParsedAccountInfo
    let ded = largestAccountInfo.value!.data;
    let buf = Buffer.from(JSON.stringify(ded));
-   console.log("CHECKING: " + JSON.parse(buf.toString()).parsed.info.owner);
-   addr.add(JSON.parse(buf.toString()).parsed.info.owner);
+   let owner = JSON.parse(buf.toString()).parsed.info.owner;
+   console.log("(" + (i+1) + "/" + mintAddr.length + ") CHECKING: " + mintAddr[i]);
+
+   //Adding to hashmap if not already included
+   if (!ownerAddr.has(owner)) {
+    ownerAddr.set(owner, 1)
+  }
+  //Incrementing number of nfts per account if included
+  else {
+    ownerAddr.set(owner, ownerAddr.get(owner)+1);
+  }
+} catch(error) {
+  console.log("(" + (i+1) + "/" + mintAddr.length + ") CHECKING: " + "ERROR SKIPPING");
+}
  }
 
- console.log("\nYour project has " + addr.size + " unqiue holders");
+ //Sorting to get top holders
+ let holders = [];
+ for (let key of ownerAddr.keys()) {
+   holders.push({
+     ownerAddress: key,
+     nftCount: ownerAddr.get(key)
+   });
+ }
+
+ let holders_sorted = holders.sort(function(a, b) {
+  return (b.nftCount > a.nftCount) ? 1 : ((a.nftCount > b.nftCount) ? -1 : 0)
+});
+
+ console.log("\nYour project has " + ownerAddr.size + " unqiue holders");
+
+ if (mintAddr.length >= 15) {
+ console.log("Top 15 holder:");
+ for (let i = 0; i < 15; i++) {
+   console.log((i+1) + ". " + holders_sorted[i]['ownerAddress'] + " owns " + holders_sorted[i]['nftCount'] + "/" + mintAddr.length + " (" + (Math.round(((holders_sorted[i]['nftCount']/mintAddr.length) + Number.EPSILON) * 1000) / 1000) + "%)");
+ }
+} else {
+  console.log("Top holder:");
+  console.log("1. " + holders_sorted[0]['ownerAddress'] + " owns " + holders_sorted[0]['nftCount'] + "/" + mintAddr.length + " (" + (Math.round(((holders_sorted[0]['nftCount']/mintAddr.length) + Number.EPSILON) * 1000) / 1000) + "%)");
+}
 
 })()
