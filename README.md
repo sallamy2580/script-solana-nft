@@ -3,6 +3,8 @@ This is a simple Typescript script that takes in a Solana NFT projects Candy Mac
 
 This program uses https://ssc-dao.genesysgo.net (line 8), you can speed up the process by using your own endpoint.
 
+## Sample Output
+
 ![Shot 1](https://imgur.com/z80lvRp.png) 
 
 ## Installing
