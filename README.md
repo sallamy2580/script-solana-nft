@@ -1,6 +1,3 @@
-
-adapted from https://solanacookbook.com/references/nfts.html#candy-machine-v1
-
 # Solana-NFT-Unique-Holders-Checker 
 This is a simple Typescript script that takes in a Solana NFT projects Candy Machine V1 ID and outputs the number of unique holders of a 1/1 NFT project (Unique Mint Address).
 
