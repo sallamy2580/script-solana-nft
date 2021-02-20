@@ -3,7 +3,6 @@
 
 import { Connection, clusterApiUrl, PublicKey } from '@solana/web3.js';
 import bs58 from 'bs58';
-import axios from "axios"
 
 const connection = new Connection("https://ssc-dao.genesysgo.net");
 const MAX_NAME_LENGTH = 32;
