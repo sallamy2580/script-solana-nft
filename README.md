@@ -1,7 +1,7 @@
 # Solana-NFT-Analytics-Tools
 This is a simple Typescript script that takes in a Solana NFT projects Candy Machine V1 ID and outputs the number of unique holders of a 1/1 NFT project (unique mint address).
 
-This program uses https://ssc-dao.genesysgo.net (line 8), you can speed up the process by using your own endpoint.
+This program uses the https://ssc-dao.genesysgo.net RPS (line 8), you can speed up the process by using your own endpoint.
 
 ## Sample Output
 
