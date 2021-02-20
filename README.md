@@ -43,7 +43,7 @@ Scraps all NFT image files from the metadata uri of each and then downloads them
 
 ### Installing
 
-* Libraries used: @solana/web3.js, bs58, axios
+* Libraries used: @solana/web3.js, @metaplex-foundation, bs58, axios
 
 ### Finding your Candy Machine ID
 
