@@ -5,6 +5,7 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 
 ## Contents
 - [Holder Distribution](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Holder-Distribution)  
+- [JPG Scraper](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
 - [Running the Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Installing](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Finding your Candy Machine ID](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Finding-your-Candy-Machine-ID) 
@@ -16,11 +17,25 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
+**holder_distribution.ts**
+
 Takes in a Solana NFT projects Candy Machine V1 ID and outputs the number of unique holders of a 1/1 NFT project (unique mint address) along with distribution information.
 
 ### Sample Output
 
 ![Shot 1](https://imgur.com/x9ohJCu.png) 
+
+## JPG Scraper
+
+[[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
+
+**jpg_scraper.ts**
+
+Scraps all NFT image files from the metadata uri of each and then downloads them in a folder (NFT symbol named) under ./images.
+
+### Sample Output
+
+![Shot 2](https://imgur.com/sioIRuF.png)
 
 ## Running the Scripts
 
