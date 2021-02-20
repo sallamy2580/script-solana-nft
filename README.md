@@ -12,7 +12,7 @@ This program uses the https://ssc-dao.genesysgo.net RPC (line 8), you can speed 
 * Libraries used: @solana/web3.js, bs58, axios
 * If you do not know your candy machine ID, at the time of writting this magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project, property: candyMachineIds) if it is not present try searching your nft on https://explorer.solana.com/
 * Paste your Candy Machine ID on line 19
-* Run using: ts-node unique_holders.ts
+* Run using: ts-node holder_distribution.ts
 
 ## Find Me
 
