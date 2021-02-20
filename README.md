@@ -19,7 +19,7 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 
 **holder_distribution.ts**
 
-Takes in a Solana NFT projects Candy Machine V1 ID and outputs the number of unique holders of a 1/1 NFT project (unique mint address) along with distribution information.
+Outputs the number of unique holders of a 1/1 NFT project (unique mint address) along with distribution information.
 
 ### Sample Output
 
