@@ -31,7 +31,7 @@ Outputs the number of unique holders of a 1/1 NFT project (unique mint address) 
 
 **jpg_scraper.ts**
 
-Scraps all NFT image files from the metadata uri of each and then downloads them in a folder (NFT symbol named) under ./images.
+Scrapes all NFT image files from the metadata uri of each and then downloads them in a folder (NFT symbol named) under ./images.
 
 ### Sample Output
 
