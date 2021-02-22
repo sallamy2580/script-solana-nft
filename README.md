@@ -4,14 +4,16 @@ A collection of scripts written in typescript for NFT analysis on the Solana blo
 These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the process by using your own endpoint.
 
 ## Contents
-- [Holder Distribution](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Holder-Distribution)  
-- [Batch Download an NFT Project's Image Files (JPG Scraper)](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
+- [Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Scripts)  
+  - [Holder Distribution](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Holder-Distribution)  
+  - [Batch Download an NFT Project's Image Files (JPG Scraper)](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
 - [Running the Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Installing](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Running](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running) 
   - [Finding your Candy Machine ID](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Finding-your-Candy-Machine-ID) 
 - [Find Me](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#find-me-)
 
+## Scripts
 
 ## Holder Distribution
 
