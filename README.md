@@ -1,4 +1,4 @@
-# Solana-NFT-Analytics-Tools
+# Solana-NFT-Scripts
 A collection of scripts written in typescript for NFT analysis on the Solana blockchain.
 
 These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the process by using your own endpoint.
