@@ -53,7 +53,7 @@ Scrapes all NFT image files from the metadata uri of each and then downloads the
 
 **id_finder.ts**
 
-The script above will prompt the user for a mint address of one of the NFT's in the desired collection. A simple way of retrieving a mint ID from a collection is the search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/MINT_ID as seen below.
+The script above will prompt the user for a mint address of one of the NFT's in the desired collection and attempt to retrieve its collections Candy Machine ID. A simple way of retrieving a mint ID from a collection is the search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/MINT_ID as seen below.
 
 ![Shot 3](https://imgur.com/Gfa6wkz.png)
 
