@@ -47,6 +47,8 @@ Scrapes all NFT image files from the metadata uri of each and then downloads the
 
 ### Finding your Candy Machine ID
 
+![Shot 3](https://imgur.com/Gfa6wkz.png)
+
 * If you do not know your candy machine ID, at the time of writting this, magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project, property: candyMachineIds). If your project is not present (or candyMachineIds: []) try searching your nft on https://explorer.solana.com/ by its mint address. The ID should be a signature address in the very first transaction.
 
 ### Running 
