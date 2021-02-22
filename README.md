@@ -53,12 +53,14 @@ Scrapes all NFT image files from the metadata uri of each and then downloads the
 
 **id_finder.ts**
 
-The script above will prompt the user for a mint address of one of the NFT's in the desired collection and attempt to retrieve its collections Candy Machine ID. A simple way of retrieving a mint ID from a collection is the search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/MINT_ID as seen below.
+The script above will prompt the user for the mint address of one of the NFT's in the desired collection and attempt to retrieve its collections Candy Machine ID. A simple way of retrieving a mint ID from a collection is to search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/ in the url as seen below.
 
 ![Shot 3](https://imgur.com/Gfa6wkz.png)
 
-* If you do not know your candy machine ID, at the time of writting this, magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project, property: candyMachineIds). 
-* If your project is not present with MagicEden and the script is no help try searching your nft on https://explorer.solana.com/ by its mint address. The ID should be a signature address in the very first transaction.
+###Alternatives
+
+* If you do not know your candy machine ID, at the time of writting this magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project, property: candyMachineIds). 
+* If your project is not present with MagicEden and the script is no help, try searching your nft on https://explorer.solana.com/ by its mint address. The ID should be a signature address in the very first transaction.
 
 ## Find Me
 
