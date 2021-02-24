@@ -56,12 +56,13 @@ output: process.stdout
 
 rl.question('Please enter a mint address: ', (answer) => {
 (async () => {
-  console.log("Attemping to find potential ID's (this may take some time)");
+  console.log("Attemping to find potential ID");
 
   let res = await connection.getParsedAccountInfo(new PublicKey(answer));
   let buff = Buffer.from(JSON.stringify(res.value!.data));
   let resultf = JSON.parse(buff.toString());
   let resy = await connection.getSignaturesForAddress(new PublicKey(resultf.parsed.info.mintAuthority));
+  let skip = false;
 
   if (resy.length > 500) {
     resy = await connection.getSignaturesForAddress(new PublicKey(answer));
@@ -73,14 +74,40 @@ rl.question('Please enter a mint address: ', (answer) => {
   let buf_ = Buffer.from(JSON.stringify(ded!.transaction));
   let results_ = JSON.parse(buf_.toString());
   results = results.innerInstructions;
-  for (let i = 0; i < results_.message.accountKeys.length; i++) {
-    if (results_.message.accountKeys[i].length != 44) {
+  if (results.length > 0) {
+    let instr = results[results.length - 1].instructions;
+    let accounts = instr[instr.length - 1].accounts;
+    let IDIndex = accounts[accounts.length - 1];
+
+    console.log("\nAn ID was Found");
+    console.log("Validating...");
+
+    let mintAddr = await getMintAddresses(new PublicKey(results_.message.accountKeys[IDIndex]));
+
+    if (mintAddr > 0) {
+        skip = true;
+        console.log("Valid")
+        console.log("\nPossible Project ID with " + mintAddr + " NFTS: " + results_.message.accountKeys[IDIndex]);
+    }
+  }
+
+
+  if (!skip) {
+    console.log("ID found had no NFTs, starting a deeper search");
+
+  buf_ = Buffer.from(JSON.stringify(ded!.transaction));
+  results_ = JSON.parse(buf_.toString());
+  results = results.innerInstructions;
+
+  for (let i = 0; i < results.message.accountKeys.length; i++) {
+    if (results.message.accountKeys[i].length != 44) {
       continue;
     }
-    let mintAddr = await getMintAddresses(new PublicKey(results_.message.accountKeys[i]));
-    if (mintAddr > 0) {
-        console.log("\nPossible Project ID with " + mintAddr + " NFTS: " + results_.message.accountKeys[i]);
+    let mintAddr_ = await getMintAddresses(new PublicKey(results.message.accountKeys[i]));
+    if (mintAddr_ > 0) {
+        console.log("\nPossible Project ID with " + mintAddr_ + " NFTS: " + results.message.accountKeys[i]);
     }
+}
 }
   })()
   rl.close();
