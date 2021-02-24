@@ -99,6 +99,7 @@ rl.question('Please enter a mint address: ', (answer) => {
     let mintAddr_ = await getMintAddresses(new PublicKey(results_.message.accountKeys[i]));
     if (mintAddr_ > 0) {
         console.log("\nPossible Project ID with " + mintAddr_ + " NFTS: " + results_.message.accountKeys[i]);
+        break;
     }
 }
 }
