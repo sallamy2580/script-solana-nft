@@ -54,7 +54,7 @@ Reverse image search a given NFT image. Place the desired image where the script
 
 ### Installing
 
-* Libraries used: @solana/web3.js, @metaplex-foundation, bs58, axios
+* Libraries used: @solana/web3.js, @metaplex-foundation, bs58, axios, resemblejs
 
 ### Running 
 * Paste your Candy Machine ID at the top portion of the scripts that says ENTER-YOUR-ID-HERE
