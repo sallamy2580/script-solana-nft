@@ -36,17 +36,17 @@ Outputs the number of unique holders of a 1/1 NFT project (unique mint address) 
 
 Scrapes all NFT image files from the metadata uri of each and then downloads them in a folder (NFT symbol named) under ./images.
 
-## JPG Scraper
+### Sample Output
+
+![Shot 2](https://imgur.com/sioIRuF.png)
+
+## Reverse Image Search
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
 **reverse_image_search.ts**
 
 Reverse image search a given nft image. Place the desired image where the script and the folder ./resemblejs are located. Paste in the projects Candy Machine ID and image file name at the start of the script. This program will output the most visually similar NFT image in the given collection.
-
-### Sample Output
-
-![Shot 2](https://imgur.com/sioIRuF.png)
 
 ## Running the Scripts
 
