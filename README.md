@@ -48,6 +48,10 @@ Scrapes all NFT image files from the metadata uri of each and then downloads the
 
 Reverse image search a given NFT image. Place the desired image where the script and the folder ./resemblejs are located. Paste in the projects Candy Machine ID and image file name at the start of the script. This program will output the most visually similar NFT image in the given collection.
 
+### Sample Output
+
+![Shot 2](https://imgur.com/KqykRZe.png)
+
 ## Running the Scripts
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
