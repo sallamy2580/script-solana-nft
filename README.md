@@ -6,7 +6,8 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 ## Contents
 - [Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Scripts)  
   - [Holder Distribution](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Holder-Distribution)  
-  - [Batch Download an NFT Project's Image Files (JPG Scraper)](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
+  - [Batch Download NFT's (JPG Scraper)](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
+  - [Reverse Image Search](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#reverse-image-search)  
 - [Running the Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Installing](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Running](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running) 
@@ -34,6 +35,14 @@ Outputs the number of unique holders of a 1/1 NFT project (unique mint address) 
 **jpg_scraper.ts**
 
 Scrapes all NFT image files from the metadata uri of each and then downloads them in a folder (NFT symbol named) under ./images.
+
+## JPG Scraper
+
+[[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
+
+**reverse_image_search.ts**
+
+Reverse image search a given nft image. Place the desired image where the script and the folder ./resemblejs are located. Paste in the projects Candy Machine ID and image file name at the start of the script. This program will output the most visually similar NFT image in the given collection.
 
 ### Sample Output
 
