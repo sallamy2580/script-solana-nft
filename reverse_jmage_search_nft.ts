@@ -5,7 +5,7 @@ import { Connection, clusterApiUrl, PublicKey } from '@solana/web3.js';
 import bs58 from 'bs58';
 import { Metadata } from '@metaplex-foundation/mpl-token-metadata';
 
-const connection = new Connection("https://holy-delicate-smoke.solana-mainnet.quiknode.pro/5524fc604da3612d50fa48df9a206fc357cb78e3/");
+const connection = new Connection("https://ssc-dao.genesysgo.net");
 const MAX_NAME_LENGTH = 32;
 const MAX_URI_LENGTH = 200;
 const MAX_SYMBOL_LENGTH = 10;
