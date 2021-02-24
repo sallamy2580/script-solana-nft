@@ -46,9 +46,6 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
   return metadataAccounts.length;
 };
 
-
-
-
 let rl = readline.createInterface({
 input: process.stdin,
 output: process.stdout
