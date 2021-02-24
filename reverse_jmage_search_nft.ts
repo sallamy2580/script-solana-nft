@@ -78,7 +78,7 @@ console.log("Fetching Mint Addresses (this may take a few minutes, sit back)");
     url: url,
     responseType: "arraybuffer"
   }).then(function (response) {
-    var diff = resemble(file).compareTo(response.data).ignoreColors().onComplete(function(data:any){
+    var diff = resemble(file).compareTo(response.data).scaleToSameSize().ignoreAntialiasing().onComplete(function(data:any){
         if (data.rawMisMatchPercentage < lowest_score) {
           lowest_score = data.rawMisMatchPercentage;
           index = i;
