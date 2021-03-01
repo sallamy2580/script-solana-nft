@@ -1,7 +1,7 @@
 # Solana NFT Scripts
 A collection of scripts written in typescript for NFT analysis on the Solana blockchain.
 
-These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the process by using your own endpoint.
+These scripts use the https://ssc-dao.genesysgo.net RPC by default, you can speed up the process by using your own endpoint and placing it in the config.json file. All input goes inside the config.json file as described in detail below.
 
 ## Contents
 - [Preface](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Preface)  
@@ -10,6 +10,7 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
   - [Holder Distribution](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Holder-Distribution)  
   - [Batch Download NFT's (JPG Scraper)](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
   - [Reverse Image Search](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#reverse-image-search)  
+- [Config.json](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)  
 - [Running the Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Installing](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Running](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running) 
@@ -23,7 +24,7 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 
 ### Manual Exploring
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like most other crytocurrencies Solana relies on a public ledger of information like transactions and digital ownership (at its core this is all Solana is). It is this public ledger which the scripts below query. Websites such as https://https://explorer.solana.com/ offer a great user interface for exploring the blockchain; however, as of writting do not provide in-depth tools like that given in this repo. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Like most other crytocurrencies Solana relies on a public information ledger mostly holding transactions and digital ownership (at its core this is all Solana is). It is this public ledger which the scripts below query. Websites such as https://https://explorer.solana.com/ offer a great user interface for exploring the blockchain; however, as of writting do not provide in-depth tools for analyzing NFT data. This project attempts to mitigate this in an opensource manner. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;That being said the Scripts in this repo often output data such as an NFT's mint address. Say you wanted to know the wallet address of an individual who owns a specific NFT you have a digital copy of. In this case one can use the reverse image search tool, get the mint address, and then go to (in the case of SOLGods #6435) https://explorer.solana.com/address/2PVRXbZwYzAeXHAQtDWDJX4T7GVxohXKtfc8SkFg7UJm (mint address after /address/). It is here where a user can understand more about a given NFT. This includes the owning wallet, transaction history, the NFT's metadata, etc.
   
@@ -35,7 +36,8 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-**holder_distribution.ts**
+**holder_distribution.ts** 
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outputs the number of unique holders of a 1/1 NFT project (unique mint address) along with distribution information.
 
@@ -48,6 +50,7 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
 **jpg_scraper.ts**
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scrapes all NFT image files from the metadata uri of each and then downloads them in a folder (NFT symbol named) under ./images.
 
@@ -60,6 +63,7 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
 **reverse_image_search.ts**
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reverse image search a given NFT image. Place the desired image where the script and the folder ./resemblejs are located. Paste in the projects Candy Machine ID and image file name at the start of the script. This program will output the most visually similar NFT image in the given collection.
 
@@ -67,17 +71,53 @@ These scripts use the https://ssc-dao.genesysgo.net RPC, you can speed up the pr
 
 ![Shot 2](https://imgur.com/KqykRZe.png)
 
+## Config.json
+
+[[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
+
+Each script requirs different input data from the config.json file. Please refer to the table below before running each script. Each cell tells you if the associated script needs the appropriate config json attribute to function.
+
+| Script\config attr         | **RPC** | **mint_id** | **reverse_img_filename** | **reverse_img_attr_filter** |
+|----------------------------|---------|-------------|--------------------------|-----------------------------|
+| **get_mint_json**          | YES     | YES         | NO                       | NO                          |
+| **holder_distribution**    | YES     | YES         | NO                       | NO                          |
+| **id_finder**              | YES     | NO          | NO                       | NO                          |
+| **jpg_scraper**            | YES     | YES         | NO                       | NO                          |
+| **reverse_img_search_nft** | YES     | YES         | YES                      | YES                         |
+
 ### Installing
 
-* Libraries used: @solana/web3.js, @metaplex-foundation, bs58, axios, resemblejs
+[[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
+
+Enter your command prompt or terminal on a machine with Git & NodeJS, run the following commands:
+
+Mac/Linux/Windows
+```
+git clone https://github.com/WilliamAmbrozic/Solana-NFT-Scripts.git
+cd Solana-NFT-Scripts
+npm install
+npm install bs58
+```
 
 ### Running 
-* Paste your Candy Machine ID at the top portion of the scripts that says ENTER-YOUR-ID-HERE
-* Run using: ts-node SCRIPT_NAME_HERE
+
+[[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
+
+Follow the config requirments for each script and then run using:
+```
+ts-node SCRIPT_NAME_HERE
+```
+For example run id_finder.ts like so:
+```
+ts-node id_finder.ts
+```
 
 ### Finding your Candy Machine ID
 
+[[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
+
 **id_finder.ts**
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The script above will prompt the user for the mint address of one of the NFT's in the desired collection and attempt to retrieve its collections Candy Machine ID. A simple way of retrieving a mint ID from a collection is to search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/ in the url as seen below.
 
