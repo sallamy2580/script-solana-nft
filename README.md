@@ -103,7 +103,7 @@ npm install bs58
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-Follow the config requirments for each script and then run using:
+Follow the [config requirments](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)   for each script and then run using:
 ```
 ts-node SCRIPT_NAME_HERE
 ```
