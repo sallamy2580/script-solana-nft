@@ -62,10 +62,24 @@
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-**reverse_image_search.ts**
+**reverse_image_search_nft.ts**
 [See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reverse image search a given NFT image. Place the desired image where the script and the folder ./resemblejs are located. Paste in the projects Candy Machine ID and image file name at the start of the script. This program will output the most visually similar NFT image in the given collection.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reverse image search a given NFT image. Place the desired image where the script and the folder ./resemblejs are located. Paste in the projects CandyMachine ID and image file name in the config file. This program will output the most visually similar NFT image in the given collection.
+
+To speed up the process one can add attribute filters in the config file. An example is shown below. The format matches the format you would find in an NFTs uri. This filters out any NFT that does not have these attributes so the script does not have to fetch its image and compare.
+```
+"reverse_img_attr_filters": [
+      {
+        "trait_type": "Background",
+        "value": "Green"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Beads"
+      }
+    ]
+```
 
 ### Sample Output
 
