@@ -16,7 +16,7 @@
   - [Running](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running) 
   - [Finding your CandyMachine ID](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Finding-your-CandyMachine-ID) 
 - [Find Me](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#find-me-)
-- [Donate](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#donate-some-sol)
+- [Donate](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#donate-sol)
 
 ## Preface
 
