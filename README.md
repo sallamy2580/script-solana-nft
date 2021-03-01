@@ -75,7 +75,7 @@
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-Each script requirs different input data from the config.json file. Please refer to the table below before running each script. Each cell tells you if the associated script needs the appropriate config json attribute to function.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each script requirs different input data from the config.json file. Please refer to the table below before running each script. Each cell tells you if the associated script needs the appropriate config json attribute to function.
 
 | Script\config attr         | **RPC** | **mint_id** | **reverse_img_filename** | **reverse_img_attr_filter** |
 |----------------------------|---------|-------------|--------------------------|-----------------------------|
@@ -89,7 +89,7 @@ Each script requirs different input data from the config.json file. Please refer
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-Enter your command prompt or terminal on a machine with Git & NodeJS, run the following commands:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter your command prompt or terminal on a machine with Git & NodeJS, run the following commands:
 
 Mac/Linux/Windows
 ```
@@ -103,7 +103,7 @@ npm install bs58
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-Follow the [config requirments](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)   for each script and then run using:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follow the [config requirments](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)   for each script and then run using:
 ```
 ts-node SCRIPT_NAME_HERE
 ```
