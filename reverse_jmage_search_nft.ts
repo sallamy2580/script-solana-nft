@@ -4,9 +4,9 @@ import * as fs from 'fs';
 import { Connection, clusterApiUrl, PublicKey } from '@solana/web3.js';
 import bs58 from 'bs58';
 import { Metadata } from '@metaplex-foundation/mpl-token-metadata';
+import config from './config.json';
 
-const connection = new Connection("https://ssc-dao.genesysgo.net");
-
+const connection = new Connection(config.data.RPC);
 const MAX_NAME_LENGTH = 32;
 const MAX_URI_LENGTH = 200;
 const MAX_SYMBOL_LENGTH = 10;
@@ -16,6 +16,8 @@ const MAX_DATA_SIZE = 4 + MAX_NAME_LENGTH + 4 + MAX_SYMBOL_LENGTH + 4 + MAX_URI_
 const MAX_METADATA_LEN = 1 + 32 + 32 + MAX_DATA_SIZE + 1 + 1 + 9 + 172;
 const CREATOR_mintAddrAY_START = 1 + 32 + 32 + 4 + MAX_NAME_LENGTH + 4 + MAX_URI_LENGTH + 4 + MAX_SYMBOL_LENGTH + 2 + 1 + 4;
 
+const fileName = config.data.reverse_img_filename;
+const candyMachineId = new PublicKey(config.data.mint_id);
 const TOKEN_METADATA_PROGRAM = new PublicKey('metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s');
 
 const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
@@ -40,69 +42,86 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
     },
   );
 
-  return metadataAccounts.length;
+  return metadataAccounts.map((metadataAccountInfo) => (
+    bs58.encode(metadataAccountInfo.account.data)
+  ));
 };
 
-
-
-
-let rl = readline.createInterface({
-input: process.stdin,
-output: process.stdout
-});
-
-rl.question('Please enter a mint address: ', (answer) => {
 (async () => {
-  console.log("Attemping to find potential ID");
+  let file = fs.readFileSync(fileName);
 
-  let res = await connection.getParsedAccountInfo(new PublicKey(answer));
-  let buff = Buffer.from(JSON.stringify(res.value!.data));
-  let resultf = JSON.parse(buff.toString());
-  let resy = await connection.getSignaturesForAddress(new PublicKey(resultf.parsed.info.mintAuthority));
+  let mintAddr:any = [];
+  console.log("Fetching Mint Addresses (this may take a few minutes, sit back)");
+
+  //Getting mint addresses from candy machine ID or saved JSON
+  try {
+    let mint = require('./mint_addr/' + config.data.mint_id + ".json");
+    mintAddr = mint.mint_addr;
+    console.log("Found mint addresses from local JSON file");
+  } catch (error) {
+    mintAddr = await getMintAddresses(candyMachineId);
+    let save_json = {mint_addr: mintAddr};
+    if (!fs.existsSync("./mint_addr")){
+      fs.mkdirSync("./mint_addr");
+    }
+    fs.writeFile ("./mint_addr/" + config.data.mint_id + ".json", JSON.stringify(save_json), function(err:any) {
+     if (err) throw err;
+     });
+  }
+  let mintLen = mintAddr.length;
+
+  let lowest_score = 101;
+  let index = 0;
+
+  for (let i = 0; i < mintLen; i++) {
+    try {
+
+  const metadataPDA = await Metadata.getPDA(new PublicKey(mintAddr[i]));
+  const tokenMetadata = await Metadata.load(connection, metadataPDA);
+  const result = await axios.get(tokenMetadata.data.data.uri);
   let skip = false;
 
-  if (resy.length > 500) {
-    resy = await connection.getSignaturesForAddress(new PublicKey(answer));
-  }
-
-  const ded = await connection.getTransaction(resy[resy.length-1].signature);
-  let buf = Buffer.from(JSON.stringify(ded!.meta));
-  let results = JSON.parse(buf.toString());
-  let buf_ = Buffer.from(JSON.stringify(ded!.transaction));
-  let results_ = JSON.parse(buf_.toString());
-  results = results.innerInstructions;
-  if (results.length > 0) {
-    let instr = results[results.length - 1].instructions;
-    let accounts = instr[instr.length - 1].accounts;
-    let IDIndex = accounts[accounts.length - 1];
-
-    console.log("\nAn ID was Found");
-    console.log("Validating...");
-
-    let mintAddr = await getMintAddresses(new PublicKey(results_.message.accountKeys[IDIndex]));
-
-    if (mintAddr > 0) {
+  let filters = config.data.reverse_img_attr_filters;
+  for (let filter of filters) {
+    for (let i = 0; i < result.data.attributes.length; i++) {
+      if (result.data.attributes[i].trait_type == filter.trait_type && result.data.attributes[i].value != filter.value ) {
         skip = true;
-        console.log("Valid")
-        console.log("\nPossible Project ID with " + mintAddr + " NFTS: " + results_.message.accountKeys[IDIndex]);
+        break;
+      }
+    }
+    if (skip) {
+      break;
     }
   }
 
+  if (skip) {
+    continue;
+  }
 
-  if (!skip) {
-    console.log("ID found had no NFTs, starting a deeper search");
+  let url = result.data.image;
 
-  for (let i = 0; i < results_.message.accountKeys.length; i++) {
-    if (results_.message.accountKeys[i].length != 44) {
-      continue;
-    }
-    let mintAddr_ = await getMintAddresses(new PublicKey(results_.message.accountKeys[i]));
-    if (mintAddr_ > 0) {
-        console.log("\nPossible Project ID with " + mintAddr_ + " NFTS: " + results_.message.accountKeys[i]);
-        break;
-    }
+  await axios({
+    method: "get",
+    url: url,
+    responseType: "arraybuffer"
+  }).then(function (response) {
+    var diff = resemble(file).compareTo(response.data).scaleToSameSize().ignoreAntialiasing().onComplete(function(data:any){
+        if (data.rawMisMatchPercentage < lowest_score) {
+          lowest_score = data.rawMisMatchPercentage;
+          index = i;
+        }
+        console.log("(" + (i+1) + "/" + mintLen + ") Checking: " + mintAddr[i] + " -> " + (Math.round(((100 - data.rawMisMatchPercentage) + Number.EPSILON) * 100) / 100) + "% Similarity");
+    });
+  });
+
+  if (lowest_score == 0) {
+    console.log("Found a perfect match");
+    break;
+  }
+} catch (error) {
+  console.log("(" + (i+1) + "/" + mintLen + ") Error on " + mintAddr[i]);
 }
 }
-  })()
-  rl.close();
-});
+console.log("\nNFT mint address: " + mintAddr[index]);
+
+})()
