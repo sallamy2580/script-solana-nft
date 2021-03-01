@@ -52,7 +52,7 @@ These scripts use the https://ssc-dao.genesysgo.net RPC by default, you can spee
 **jpg_scraper.ts**
 [See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scrapes all NFT image files from the metadata uri of each and then downloads them in a folder (NFT symbol named) under ./images.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scrapes all NFT image files from the metadata uri of each and then downloads them in a folder (CandyMachine ID named) under ./images.
 
 ### Sample Output
 
