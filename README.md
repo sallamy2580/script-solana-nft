@@ -10,7 +10,7 @@
   - [Holder Distribution](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Holder-Distribution)  
   - [Batch Download NFT's (JPG Scraper)](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
   - [Reverse Image Search](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#reverse-image-search)  
-- [Config.json](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)  
+- [Config](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)  
 - [Running the Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Installing](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Running](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running) 
@@ -37,7 +37,7 @@
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
 **holder_distribution.ts** 
-[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outputs the number of unique holders of a 1/1 NFT project (unique mint address) along with distribution information.
 
@@ -50,7 +50,7 @@
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
 **jpg_scraper.ts**
-[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scrapes all NFT image files from the metadata uri of each and then downloads them in a folder (CandyMachine ID named) under ./images.
 
@@ -63,7 +63,7 @@
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
 **reverse_image_search.ts**
-[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reverse image search a given NFT image. Place the desired image where the script and the folder ./resemblejs are located. Paste in the projects Candy Machine ID and image file name at the start of the script. This program will output the most visually similar NFT image in the given collection.
 
@@ -71,7 +71,7 @@
 
 ![Shot 2](https://imgur.com/KqykRZe.png)
 
-## Config.json
+## Config
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
@@ -103,7 +103,7 @@ npm install bs58
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-Follow the [config requirments](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)   for each script and then run using:
+Follow the [config requirments](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)   for each script and then run using:
 ```
 ts-node SCRIPT_NAME_HERE
 ```
@@ -117,7 +117,7 @@ ts-node id_finder.ts
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
 **id_finder.ts**
-[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config.json)
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The script above will prompt the user for the mint address of one of the NFT's in the desired collection and attempt to retrieve its collections Candy Machine ID. A simple way of retrieving a mint ID from a collection is to search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/ in the url as seen below.
 
