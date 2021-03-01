@@ -14,7 +14,7 @@
 - [Running the Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Installing](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Running](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running) 
-  - [Finding your Candy Machine ID](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Finding-your-Candy-Machine-ID) 
+  - [Finding your CandyMachine ID](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Finding-your-CandyMachine-ID) 
 - [Find Me](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#find-me-)
 - [Donate](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#donate-some-sol)
 
@@ -126,20 +126,20 @@ For example run id_finder.ts like so:
 ts-node id_finder.ts
 ```
 
-### Finding your Candy Machine ID
+### Finding your CandyMachine ID
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
 **id_finder.ts**
 [See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The script above will prompt the user for the mint address of one of the NFT's in the desired collection and attempt to retrieve its collections Candy Machine ID. A simple way of retrieving a mint ID from a collection is to search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/ in the url as seen below.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The script above will prompt the user for the mint address of one of the NFT's in the desired collection and attempt to retrieve its collections CandyMachine ID. A simple way of retrieving a mint ID from a collection is to search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/ in the url as seen below.
 
 ![Shot 3](https://imgur.com/Gfa6wkz.png)
 
 ### Alternatives
 
-* If you do not know your candy machine ID, at the time of writting this magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project, property: candyMachineIds). 
+* If you do not know your CandyMachine ID, at the time of writting this magiceden has an open endpoint at https://api-mainnet.magiceden.io/all_collections (ctrl f search your project, property: candyMachineIds). 
 * If your project is not present with MagicEden and the script is no help, try searching your NFT on https://explorer.solana.com/ by its mint address. The ID should be a signature address in the very first transaction.
 
 ## Find Me
