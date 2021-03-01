@@ -7,8 +7,9 @@ import { Connection, clusterApiUrl, PublicKey } from '@solana/web3.js';
 import bs58 from 'bs58';
 import { Metadata } from '@metaplex-foundation/mpl-token-metadata';
 import * as readline from 'readline';
+import config from './config.json';
 
-const connection = new Connection("https://ssc-dao.genesysgo.net");
+const connection = new Connection(config.data.RPC);
 
 const MAX_NAME_LENGTH = 32;
 const MAX_URI_LENGTH = 200;
@@ -45,6 +46,9 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
 
   return metadataAccounts.length;
 };
+
+
+
 
 let rl = readline.createInterface({
 input: process.stdin,
@@ -92,17 +96,14 @@ rl.question('Please enter a mint address: ', (answer) => {
   if (!skip) {
     console.log("ID found had no NFTs, starting a deeper search");
 
-  buf_ = Buffer.from(JSON.stringify(ded!.transaction));
-  results_ = JSON.parse(buf_.toString());
-  results = results.innerInstructions;
-
-  for (let i = 0; i < results.message.accountKeys.length; i++) {
-    if (results.message.accountKeys[i].length != 44) {
+  for (let i = 0; i < results_.message.accountKeys.length; i++) {
+    if (results_.message.accountKeys[i].length != 44) {
       continue;
     }
-    let mintAddr_ = await getMintAddresses(new PublicKey(results.message.accountKeys[i]));
+    let mintAddr_ = await getMintAddresses(new PublicKey(results_.message.accountKeys[i]));
     if (mintAddr_ > 0) {
-        console.log("\nPossible Project ID with " + mintAddr_ + " NFTS: " + results.message.accountKeys[i]);
+        console.log("\nPossible Project ID with " + mintAddr_ + " NFTS: " + results_.message.accountKeys[i]);
+        break;
     }
 }
 }
