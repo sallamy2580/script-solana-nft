@@ -89,7 +89,7 @@
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter your command prompt or terminal on a machine with Git & NodeJS, run the following commands:
+Enter your command prompt or terminal on a machine with Git & NodeJS, run the following commands:
 
 Mac/Linux/Windows
 ```
@@ -103,7 +103,7 @@ npm install bs58
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Follow the [config requirments](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)   for each script and then run using:
+Follow the [config requirments](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)   for each script and then run using:
 ```
 ts-node SCRIPT_NAME_HERE
 ```
