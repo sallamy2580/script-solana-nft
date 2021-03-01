@@ -130,6 +130,7 @@ Mac/Linux/Windows
 git clone https://github.com/WilliamAmbrozic/Solana-NFT-Scripts.git
 cd Solana-NFT-Scripts
 npm install
+npm install typescript
 npm install bs58
 ```
 
