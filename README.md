@@ -99,6 +99,26 @@
 | **jpg_scraper**            | YES     | YES         | NO                       | NO                          |
 | **reverse_img_search_nft** | YES     | YES         | YES                      | YES                         |
 
+```
+{
+  "data": {
+    "RPC": "https://ssc-dao.genesysgo.net",
+    "mint_id": "ALNcW6QDNf7H4iNiTM3FD16LZ4zMGyEeCYQiE1AbCoXk",
+    "reverse_img_filename": "solgod.png",
+    "reverse_img_attr_filters": [
+      {
+        "trait_type": "Background",
+        "value": "Green"
+      },
+      {
+        "trait_type": "Eyes",
+        "value": "Beads"
+      }
+    ]
+  }
+}
+```
+
 ### Installing
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
