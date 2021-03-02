@@ -10,6 +10,7 @@
   - [Holder Distribution](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Holder-Distribution)  
   - [Batch Download NFT's (JPG Scraper)](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
   - [Reverse Image Search](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#reverse-image-search)  
+  - [Fetch Mint Addresses](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#fetch-mint-addresses)  
 - [Config](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)  
 - [Running the Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Installing](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
@@ -81,9 +82,14 @@
     ]
 ```
 
-### Sample Output
+## Fetch Mint Addresses
 
-![Shot 2](https://imgur.com/KqykRZe.png)
+[[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
+
+**get_mint_json.ts**
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This script will fetch all mint addresses associated with the CandyMachine ID in your config file and store them in a json array located in ./mint_addr. The file will be named after the CandyMachineID.json. This script will update the file if it already exists.
 
 ## Config
 
@@ -98,6 +104,7 @@
 | **id_finder**              | YES     | NO          | NO                       | NO                          |
 | **jpg_scraper**            | YES     | YES         | NO                       | NO                          |
 | **reverse_img_search_nft** | YES     | YES         | YES                      | YES                         |
+| **get_mint_json.ts**       | YES     | YES         | NO                       | NO                          |
 
 ```
 {
