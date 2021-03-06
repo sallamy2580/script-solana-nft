@@ -92,7 +92,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This script will fetch all mint addresses associated with the CandyMachine ID in your config file and store them in a json array located in ./mint_addr. The file will be named after the CandyMachineID.json. This script will update the file if it already exists.
 
-## Fetch Mint Addresses
+## Fetch Metadata
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
