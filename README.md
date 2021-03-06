@@ -11,6 +11,7 @@
   - [Batch Download NFT's (JPG Scraper)](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#JPG-Scraper)  
   - [Reverse Image Search](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#reverse-image-search)  
   - [Fetch Mint Addresses](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#fetch-mint-addresses)  
+  - [Fetch Metadata](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#fetch-metadata)  
 - [Config](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)  
 - [Running the Scripts](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
   - [Installing](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Running-the-Scripts) 
@@ -91,11 +92,20 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This script will fetch all mint addresses associated with the CandyMachine ID in your config file and store them in a json array located in ./mint_addr. The file will be named after the CandyMachineID.json. This script will update the file if it already exists.
 
+## Fetch Mint Addresses
+
+[[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
+
+**get_metadata_json.ts**
+[See Config for Input](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#Config)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This script will fetch all metadata associated with the CandyMachine ID in your config file and store them in a json array located in ./metadata. The file will be named after the CandyMachineID.json. This script will update the file if it already exists.
+
 ## Config
 
 [[Back to contents]](https://github.com/WilliamAmbrozic/Solana-NFT-Analytics-Tools#contents)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each script requirs different input data from the config.json file. Please refer to the table below before running each script. Each cell tells you if the associated script needs the appropriate config json attribute to function.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each script requires different input data from the config.json file. Please refer to the table below before running each script. Each cell tells you if the associated script needs the appropriate config json attribute to function.
 
 | Script\config attr         | **RPC** | **mint_id** | **reverse_img_filename** | **reverse_img_attr_filter** |
 |----------------------------|---------|-------------|--------------------------|-----------------------------|
@@ -105,6 +115,7 @@
 | **jpg_scraper**            | YES     | YES         | NO                       | NO                          |
 | **reverse_img_search_nft** | YES     | YES         | YES                      | YES                         |
 | **get_mint_json.ts**       | YES     | YES         | NO                       | NO                          |
+| **get_metadata_json.ts**   | YES     | YES         | NO                       | NO                          |
 
 ```
 {
