@@ -30,7 +30,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;That being said the Scripts in this repo often output data such as an NFT's mint address. Say you wanted to know the wallet address of an individual who owns a specific NFT you have a digital copy of. In this case one can use the reverse image search tool, get the mint address, and then go to (in the case of SOLGods #6435) https://explorer.solana.com/address/2PVRXbZwYzAeXHAQtDWDJX4T7GVxohXKtfc8SkFg7UJm (mint address after /address/). It is here where a user can understand more about a given NFT. This includes the owning wallet, transaction history, the NFT's metadata, etc.
   
-![Shot 2](https://imgur.com/C6eT4NP.png)
+![Shot 2](https://imgur.com/chlyR3H.png)
 
 ## Scripts
 
@@ -174,7 +174,7 @@ ts-node id_finder.ts
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The script above will prompt the user for the mint address of one of the NFT's in the desired collection and attempt to retrieve its collections CandyMachine ID. A simple way of retrieving a mint ID from a collection is to search the project on https://magiceden.io and click on one of the listings. A mint ID will be present after the /item-details/ in the url as seen below.
 
-![Shot 3](https://imgur.com/Gfa6wkz.png)
+![Shot 3](https://imgur.com/kpXMiHJ.png)
 
 ### Alternatives
 
