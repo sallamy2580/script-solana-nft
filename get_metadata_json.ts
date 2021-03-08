@@ -70,11 +70,17 @@ const getMintAddresses = async (firstCreatorAddress: PublicKey) => {
    let ret_json:any = []
 
    for (let i = 0; i < mintAddr.length; i++) {
-     console.log(i);
+     try {
+     console.log("(" + (i+1) + "/" + mintAddr.length + ") Fetching " + mintAddr[i]);
      const metadataPDA = await Metadata.getPDA(new PublicKey(mintAddr[i]));
      const tokenMetadata = await Metadata.load(connection, metadataPDA);
      const result = await axios.get(tokenMetadata.data.data.uri)
      ret_json.push(result.data);
+   } catch {
+     console.log("(" + (i+1) + "/" + mintAddr.length + ") Error Fetching " + mintAddr[i] + " - Trying Again");
+     i--;
+     continue;
+   }
    }
 
    let save_json = {metadata: ret_json};
